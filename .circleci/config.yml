@@ -32,6 +32,14 @@ jobs: # basic units of work in a run
       - run:
           name: "Print an env var stored in a Context"
           command: echo ${CONTEXT_ENV_VAR}
+      - run:
+          name: "Setup custom environment variable me"
+          command: echo 'export MY_ENV_VAR_ME="FOO2"' >> "$BASH_ENV"
+
+      - run:
+          name: "Print an env var me"
+          command:  echo ${MY_ENV_VAR_ME}
+
 
 workflows: # a single workflow with a single job called build
   build:
